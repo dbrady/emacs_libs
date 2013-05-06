@@ -25,10 +25,10 @@
 
 ;;(define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-  '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
-   ("j" "Journal" entry (file+datetree "~/org/journal.org")
-    "* %?\nEntered on %U\n  %i\n  %a")))
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))
 ;;MobileOrg settings
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
 
@@ -42,13 +42,13 @@
                "\\documentclass{article}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-export-latex-classes
-          '("koma-article"
-             "\\documentclass{scrartcl}"
-             ("\\section{%s}" . "\\section*{%s}")
-             ("\\subsection{%s}" . "\\subsection*{%s}")
-             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-             ("\\paragraph{%s}" . "\\paragraph*{%s}")
-             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+             '("koma-article"
+               "\\documentclass{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 ;;(setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
 
 (custom-set-variables
@@ -76,16 +76,16 @@
 ;;(load-theme 'solarized-dark t)
 (require 'color-theme)
 (require 'color-theme-solarized)
-	(color-theme-initialize)
-	;;	(color-theme-calm-forest)
-	;;	(color-theme-goldenrod)
-	;;	(color-theme-robin-hood)
-	;;	(color-theme-gnome2)
-;;	 	(color-theme-ld-dark)
+(color-theme-initialize)
+;;	(color-theme-calm-forest)
+;;	(color-theme-goldenrod)
+;;	(color-theme-robin-hood)
+;;	(color-theme-gnome2)
+;;    (color-theme-ld-dark)
 ;;	(color-theme-clarity)
-        (color-theme-solarized-dark)
+(color-theme-solarized-dark)
 
-;; 	The value is in 1/10pt, so 100 will give you 10pt, etc.
+;;  The value is in 1/10pt, so 100 will give you 10pt, etc.
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -102,8 +102,8 @@
 (defun enable-linum-mode ()
   (linum-mode t))
 
-; ----------------------------------------------------------------------
-; Automatically enable linum mode for various modes
+;; ----------------------------------------------------------------------
+;; Automatically enable linum mode for various modes
 (setq modes-to-hook-with-linum '(c-mode-hook
                                  csv-mode-hook
                                  emacs-lisp-mode-hook
@@ -132,11 +132,11 @@
 (while modes-to-hook-with-linum
   (hook-linum-mode (car modes-to-hook-with-linum))
   (setq modes-to-hook-with-linum (cdr modes-to-hook-with-linum)))
-; End enable linum mode for various modes
-; ----------------------------------------------------------------------
+;; End enable linum mode for various modes
+;; ----------------------------------------------------------------------
 
 
-; ----------------------------------------------------------------------
+;; ----------------------------------------------------------------------
 ;; Do civilized backup names.  Added by dbrady 2003-03-07, taken from
 ;; http://emacswiki.wikiwikiweb.de/cgi-bin/wiki.pl?BackupDirectory
 (setq
@@ -147,81 +147,81 @@
  kept-new-versions 6
  kept-old-versions 2
  version-control t)          ; use versioned backups
-; end civilized backup names
-; ----------------------------------------------------------------------
+;; end civilized backup names
+;; ----------------------------------------------------------------------
 
-; ----------------------------------------------------------------------
-; tabs and line navigation
+;; ----------------------------------------------------------------------
+;; tabs and line navigation
 (global-set-key "\M-g" 'goto-line)
 (setq-default c-basic-offset 2)
 (setq-default sh-basic-offset 2)
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 2)
-; end tabs and line navigation
-; ----------------------------------------------------------------------
+;; end tabs and line navigation
+;; ----------------------------------------------------------------------
 
 
-; ----------------------------------------------------------------------
-; misc helpful keybindings
+;; ----------------------------------------------------------------------
+;; misc helpful keybindings
 ;; Bind C-c M-f to auto-fill-mode.
 (global-set-key (kbd "\C-c M-f") 'auto-fill-mode)
 
 ;; column number mode - show current column number
 (column-number-mode t)
-; ----------------------------------------------------------------------
+;; ----------------------------------------------------------------------
 
 
-; ----------------------------------------------------------------------
-; reload-buffer
-; Seriously, why doesn't this already exist? Reloads the current
-; buffer.  find-alternate-file will sort of already do this; if you do
-; not supply an argument to it it will reload the current
-; buffer... but it will switch you to another buffer when it does
-; it. All this function does is find-alt and then switch you back.
-;
-; TODO: This breaks down when you have multiple buffers containing the
-; same file basename, e.g. app/models/user.rb and spec/models/user.rb
-; because one of the buffers will have the buffername "user.rb (2)".
-; The buffer will be reloaded correctly but won't get switched to. Not
-; entirely sure why. Ideally it would be nice to be able to find a
-; buffer by the complete pathname it is visiting, as this would remain
-; constant and unique.
-; TODO: This uses buffername, which can be e.g. test.txt<2> if you
-; have multiple text.txt files open. Ideally we should figure out what
-; the proper filename of the buffer is and grab that.
+;; ----------------------------------------------------------------------
+;; reload-buffer
+;; Seriously, why doesn't this already exist? Reloads the current
+;; buffer.  find-alternate-file will sort of already do this; if you do
+;; not supply an argument to it it will reload the current
+;; buffer... but it will switch you to another buffer when it does
+;; it. All this function does is find-alt and then switch you back.
+;;
+;; TODO: This breaks down when you have multiple buffers containing the
+;; same file basename, e.g. app/models/user.rb and spec/models/user.rb
+;; because one of the buffers will have the buffername "user.rb (2)".
+;; The buffer will be reloaded correctly but won't get switched to. Not
+;; entirely sure why. Ideally it would be nice to be able to find a
+;; buffer by the complete pathname it is visiting, as this would remain
+;; constant and unique.
+;; TODO: This uses buffername, which can be e.g. test.txt<2> if you
+;; have multiple text.txt files open. Ideally we should figure out what
+;; the proper filename of the buffer is and grab that.
 (defun reload-buffer()
   (interactive)
   (let ((buffername (buffer-name)))
     (find-alternate-file buffername)
     (switch-to-buffer buffername)))
-; override the binding for find-alternate-file to be reload-buffer,
-; since that's what I always use it for.
+;; override the binding for find-alternate-file to be reload-buffer,
+;; since that's what I always use it for.
 (global-set-key (kbd "\C-x C-v") 'reload-buffer)
-; end reload-buffer
-; ----------------------------------------------------------------------
+;; end reload-buffer
+;; ----------------------------------------------------------------------
 
-; ----------------------------------------------------------------------
+;; ----------------------------------------------------------------------
 ;; YASnippet
 (require 'yasnippet)
 (yas/initialize)
 (yas/load-directory (concat emacs-lib-path "yasnippet-0.6.1c/snippets/"))
-; end YASnippet
-; ----------------------------------------------------------------------
+;; end YASnippet
+;; ----------------------------------------------------------------------
 
-; ----------------------------------------------------------------------
-; Commenting
+;; ----------------------------------------------------------------------
+;; Commenting
 (require 'newcomment)
 (global-set-key (kbd "\C-c /") 'comment-dwim)
 (global-set-key (kbd "\C-c #") 'comment-dwim)
-; end Commenting
-; ----------------------------------------------------------------------
+;; end Commenting
+;; ----------------------------------------------------------------------
 
 
-; ----------------------------------------------------------------------
-; Toggle case
+;; ----------------------------------------------------------------------
+;; Toggle case
 (require 'toggle-case)
-; end Toggle case
-; ----------------------------------------------------------------------
+;; end Toggle case
+;; ----------------------------------------------------------------------
 
 (defun swap-values (symbol1 symbol2)
   "Swap the values of SYMBOL1 and SYMBOL2.
@@ -231,7 +231,7 @@ Return the former value of SYMBOL1, the final value of SYMBOL2."
     (set symbol2 x)))
 
 (defun transpose-regions-allow-empty (startr1 endr1 startr2 endr2 &optional
-leave-markers)
+                                              leave-markers)
   "Like `transpose-regions', but allow empty regions."
   (if (> startr1 endr1)
       (swap-values 'startr1 'endr1))
@@ -352,6 +352,33 @@ See `transpose-regions' for LEAVE-MARKERS."
 ;; doesn't work with C-u, though. boo.
 (global-set-key (kbd "\C-x p") 'previous-multiframe-window)
 
+;; ---------------------------------------------------------------------
+;; make-emacs-shutup-about-font-lock-syntactic-keywords
+;;
+;; Run this if you open a mixed-mode (html+js+erb, usually) file and
+;; get these errors:
+;;
+;; Warning: `font-lock-beginning-of-syntax-function' is an obsolete variable (as
+;; of 23.3); use `syntax-begin-function' instead.
+;; Warning: `font-lock-syntactic-keywords' is an obsolete variable (as of 24.1);
+;; use `syntax-propertize-function' instead.
+;;
+;;
+;; Fixes emacs 24 bug when opening erb/js/html mixed-mode files. I
+;; haven't figured out how to run this automatically; the bug occurs
+;; in some code that is lazily loaded AFTER emacs has finished
+;; starting up (well, after all hookable methods I could find have
+;; already finished at any rate). You can run this at any time after
+;; startup has finished (i.e. as soon as you have control of emacs).
+;; Once you run this function you won't get those font-lock- syntax
+;; errors for the rest of your emacs session.
+(defun make-emacs-shutup-about-font-lock-syntactic-keywords ()
+  (interactive)
+  (add-to-list 'byte-compile-not-obsolete-vars
+               'font-lock-beginning-of-syntax-function)
+  (add-to-list 'byte-compile-not-obsolete-vars
+               'font-lock-syntactic-keywords))
+
 ;; Disable set-goal-column because I finger fudge it all the time
 (global-unset-key (kbd "\C-x C-n"))
 
@@ -394,4 +421,3 @@ See `transpose-regions' for LEAVE-MARKERS."
   (let ((tags-file (concat (eproject-root) "TAGS")))
     (visit-tags-table tags-file)
     (message (concat "Loaded " tags-file))))
-
