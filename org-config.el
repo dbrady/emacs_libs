@@ -8,14 +8,17 @@
 
 
 (setq org-todo-keywords
-       '((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "WAITING(w)" "APPT(a)" "DELEGATED(l)" 
-                   "PROJECT(p)" "AGENDA(g)" 
-		   "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
-(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("computer" . ?c) 
-		      ("errands" . ?e) ("costco" . ?t) ("grocery" . ?g) 
-		      ("project" . ?p) ("agenda" . ?a)))
+       '((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "WAITING(w)" "APPT(a)" "DELEGATED(l)"
+                   "PROJECT(p)" "AGENDA(g)"
+       "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
+(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("computer" . ?c)
+          ("errands" . ?e) ("costco" . ?t) ("grocery" . ?g)
+          ("project" . ?p) ("agenda" . ?a)))
 (setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
 
 (setf org-adapt-indentation t)
+
+(add-hook 'org-mode-hook '(lambda ()
+                             (show-all)))
 
 (provide 'org-config)
