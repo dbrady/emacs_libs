@@ -32,6 +32,8 @@
 ;;MobileOrg settings
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
 
+(add-to-list 'load-path (concat emacs-lib-path "org-7.5/lisp"))
+
 (require 'org-latex)
 (unless (boundp 'org-export-latex-classes)
   (setq org-export-latex-classes nil))
