@@ -205,4 +205,12 @@
 (when (equal system-type 'darwin) (set-exec-path-from-shell-PATH))
 
 
+;; reindent-whole-buffer
+(defun reindent-whole-buffer ()
+  (interactive)
+  (save-excursion
+   (indent-region (point-min) (point-max))))
+
+(require 'daves-hacks)
+
 (provide 'my-config)
