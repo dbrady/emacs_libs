@@ -56,15 +56,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(ecb-options-version "2.40")
  '(exec-path (quote ("/usr/local/Cellar/erlang/R14B03/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/texbin" "/Library/Frameworks/Python.framework/Versions/2.7/bin")))
  '(org-adapt-indentation t)
- '(org-agenda-files (quote ("~/org/gtd.org" "~/org/RCC.org" "~/org/journal.org" "~/org/Olive.org" "~/org/Work.org")))
+ '(org-agenda-files (quote ("~/shiny_systems/cabforward/dox/2013-08-15-todo.org" "~/org/gtd.org" "~/org/RCC.org" "~/org/journal.org" "~/org/Olive.org" "~/org/Work.org")))
  '(org-export-latex-default-class "koma-article")
  '(org-special-ctrl-a/e t)
  '(org-tags-exclude-from-inheritance (quote ("project")))
  '(org-use-tag-inheritance nil)
- '(safe-local-variable-values (quote ((encoding . utf-8)))))
+ '(safe-local-variable-values (quote ((encoding . utf-8))))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 
 
 ;;(find-file "~/org/journal.org")
@@ -352,39 +355,13 @@ See `transpose-regions' for LEAVE-MARKERS."
 ;; doesn't work with C-u, though. boo.
 (global-set-key (kbd "\C-x p") 'previous-multiframe-window)
 
-;; ---------------------------------------------------------------------
-;; make-emacs-shutup-about-font-lock-syntactic-keywords
-;;
-;; Run this if you open a mixed-mode (html+js+erb, usually) file and
-;; get these errors:
-;;
-;; Warning: `font-lock-beginning-of-syntax-function' is an obsolete variable (as
-;; of 23.3); use `syntax-begin-function' instead.
-;; Warning: `font-lock-syntactic-keywords' is an obsolete variable (as of 24.1);
-;; use `syntax-propertize-function' instead.
-;;
-;;
-;; Fixes emacs 24 bug when opening erb/js/html mixed-mode files. I
-;; haven't figured out how to run this automatically; the bug occurs
-;; in some code that is lazily loaded AFTER emacs has finished
-;; starting up (well, after all hookable methods I could find have
-;; already finished at any rate). You can run this at any time after
-;; startup has finished (i.e. as soon as you have control of emacs).
-;; Once you run this function you won't get those font-lock- syntax
-;; errors for the rest of your emacs session.
-(defun make-emacs-shutup-about-font-lock-syntactic-keywords ()
-  (interactive)
-  (add-to-list 'byte-compile-not-obsolete-vars
-               'font-lock-beginning-of-syntax-function)
-  (add-to-list 'byte-compile-not-obsolete-vars
-               'font-lock-syntactic-keywords))
-
 ;; Disable set-goal-column because I finger fudge it all the time
 (global-unset-key (kbd "\C-x C-n"))
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/emacs_libs/ac-dict")
-(ac-config-default)
+;; Autocompletion -- can be annoying
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "~/emacs_libs/ac-dict")
+;; (ac-config-default)
 
 (add-to-list 'load-path "~/emacs_libs/eproject/")
 (require 'eproject)
@@ -421,3 +398,12 @@ See `transpose-regions' for LEAVE-MARKERS."
   (let ((tags-file (concat (eproject-root) "TAGS")))
     (visit-tags-table tags-file)
     (message (concat "Loaded " tags-file))))
+
+;; for emacsclient
+;; define function to shutdown emacs server instance
+(defun server-shutdown ()
+  "Save buffers, Quit, and Shutdown (kill) server"
+  (interactive)
+  (save-some-buffers)
+  (kill-emacs)
+  )
