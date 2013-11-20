@@ -61,11 +61,10 @@
     :underline nil
     :slant normal
     :weight normal
-    :height 150   ;; The value is in 1/10pt, so 100 will give you 10pt, etc.
+    :height 128   ;; The value is in 1/10pt, so 100 will give you 10pt, etc.
     :width normal
     :foundry "unknown"
-    :family "DejaVu Sans"
-    ;;:family "Consolas"
+    :family "Liberation Mono"
   )))))
 
 (require 'dircolors)
@@ -139,13 +138,16 @@
 ;;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Add language configurations
+;;(require 'csharp-config)
 (require 'coffee-config)
 ;;(require 'erlang-config)
 ;;(require 'fsharp-config)
-;;(require 'csharp-config)
+(require 'graphviz-dot-config)
+(require 'haml-config)
+(require 'javascript-config)
 ;;(require 'python-config)
 (require 'ruby-config)
-(require 'javascript-config)
+(require 'scss-config)
 
 ;; comment helpers from dbrady (could probably be replaced with snippets)
 (require 'comment-config)
@@ -199,7 +201,7 @@
 (defun set-exec-path-from-shell-PATH ()
   (let ((path-from-shell
       (replace-regexp-in-string "[[:space:]\n]*$" ""
-        (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
+  (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 (when (equal system-type 'darwin) (set-exec-path-from-shell-PATH))

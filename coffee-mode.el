@@ -391,10 +391,10 @@ called `coffee-compiled-buffer-name'."
 (defvar coffee-keywords-regexp
   ;; keywords can be member names.
   (concat "[^.]"
-	  (regexp-opt (append coffee-js-reserved
-			      coffee-js-keywords
-			      coffee-cs-keywords
-			      iced-coffee-cs-keywords) 'words)))
+    (regexp-opt (append coffee-js-reserved
+            coffee-js-keywords
+            coffee-cs-keywords
+            iced-coffee-cs-keywords) 'words)))
 
 
 ;; Create the list for font-lock. Each class of keyword is given a
@@ -704,21 +704,21 @@ previous line."
 ;;      ;; Consider property for the last char if in a fenced string.
 ;;      ((= n 3)
 ;;       (let* ((font-lock-syntactic-keywords nil)
-;; 	     (syntax (syntax-ppss)))
-;; 	(when (eq t (nth 3 syntax))	; after unclosed fence
-;; 	  (goto-char (nth 8 syntax))	; fence position
-;; 	  ;; (skip-chars-forward "uUrR")	; skip any prefix
-;; 	  ;; Is it a matching sequence?
-;; 	  (if (eq (char-after) (char-after (match-beginning 2)))
-;; 	      (eval-when-compile (string-to-syntax "|"))))))
+;;       (syntax (syntax-ppss)))
+;;  (when (eq t (nth 3 syntax))	; after unclosed fence
+;;    (goto-char (nth 8 syntax))	; fence position
+;;    ;; (skip-chars-forward "uUrR")	; skip any prefix
+;;    ;; Is it a matching sequence?
+;;    (if (eq (char-after) (char-after (match-beginning 2)))
+;;        (eval-when-compile (string-to-syntax "|"))))))
 ;;      ;; Consider property for initial char, accounting for prefixes.
 ;;      ((or (and (= n 2)			; leading quote (not prefix)
-;; 	       (not (match-end 1)))     ; prefix is null
-;; 	  (and (= n 1)			; prefix
-;; 	       (match-end 1)))          ; non-empty
+;;         (not (match-end 1)))     ; prefix is null
+;;    (and (= n 1)			; prefix
+;;         (match-end 1)))          ; non-empty
 ;;       (let ((font-lock-syntactic-keywords nil))
-;; 	(unless (eq 'string (syntax-ppss-context (syntax-ppss)))
-;; 	  (eval-when-compile (string-to-syntax "|")))))
+;;  (unless (eq 'string (syntax-ppss-context (syntax-ppss)))
+;;    (eval-when-compile (string-to-syntax "|")))))
 ;;      ;; Otherwise (we're in a non-matching string) the property is
 ;;      ;; nil, which is OK.
 ;;      )))

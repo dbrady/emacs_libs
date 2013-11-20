@@ -1,0 +1,6 @@
+#name : (journalstart)
+# --
+\# ${1:title}
+`(format-time-string "%a %Y-%m-%d")`
+
+$0

@@ -1,0 +1,5 @@
+#name : banner Puts hyphen banner
+# --
+puts '-' * 80
+  $0
+puts '-' * 80

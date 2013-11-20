@@ -3,5 +3,7 @@
 
 (add-hook 'coffee-mode-hook
           (lambda () (linum-mode t)))
+(add-hook 'coffee-mode-hook
+          (lambda () (set 'tab-width 2)))
 
 (provide 'coffee-config)
