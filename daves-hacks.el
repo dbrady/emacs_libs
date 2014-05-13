@@ -50,4 +50,14 @@
                'font-lock-syntactic-keywords))
 ;; ----------------------------------------------------------------------
 
+
+;; dbrady/init - server-start and make-emacs-shutup are things
+;; that don't work well until after emacs has finished initializing,
+;; so make an init method
+(defun dbrady/init ()
+  (interactive)
+  (server-start)
+  (make-emacs-shutup-about-font-lock-syntactic-keywords))
+
+
 (provide 'daves-hacks)
