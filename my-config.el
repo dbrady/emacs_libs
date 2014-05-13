@@ -145,6 +145,7 @@
 (require 'graphviz-dot-config)
 (require 'haml-config)
 (require 'javascript-config)
+(require 'org-config)
 ;;(require 'python-config)
 (require 'ruby-config)
 (require 'scss-config)
