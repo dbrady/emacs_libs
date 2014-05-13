@@ -41,5 +41,25 @@
            (ad-set-args 0 '(checkbox)))))))
 ;; ----------------------------------------------------------------------
 
+;; ----------------------------------------------------------------------
+;; KWM: org-insert-journal-title
+
+;; insert e.g. "* 2014-05-09 Fri TODO\n\n\n" at the top of the
+;; document. I usually also begin my journal by copying the previous
+;; day's journal, so ideally also search for the existence of "*
+;; \d\d\d\d-\d\d-\d\d .* TODO" at the top of the document, and if
+;; found, delete that line first.
+;; ----------------------------------------------------------------------
+
+
+;; ----------------------------------------------------------------------
+;; KWM: org-uncheck-everything
+;;
+;; PDI. This is probably just a macro or a search-and-replace. Ideally
+;; search for each /^[[:space:]*]- \[X\]/ entry, then C-e, then C-c
+;; C-c.
+;; C-e is move-end-of-line
+;; C-c C-c is org-ctrl-c-ctrl-c
+;; ----------------------------------------------------------------------
 
 (provide 'org-config)
