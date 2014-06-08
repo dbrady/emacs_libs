@@ -59,5 +59,14 @@
   (server-start)
   (make-emacs-shutup-about-font-lock-syntactic-keywords))
 
+;; add "C-e C-x C-e (dbrady/init)" to *scratch* buffer
+;;
+;; Note: this overwrites the helpful "this is the scratch buffer"
+;; message
+(defun add-dbrady/init-to-scratch ()
+  (switch-to-buffer "*scratch*")
+  (insert "C-[exe] (C-e C-x C-e) (dbrady/init)\n;; Scratch buffer"))
+
+(add-dbrady/init-to-scratch)
 
 (provide 'daves-hacks)
