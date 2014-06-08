@@ -30,9 +30,16 @@
 (defun safe-comment-end ()
   (safe-string comment-end ""))
 
+(defun repeat-char-to-column (char column)
+  (if (< (current-column) column)
+    (make-string (- column (current-column)) char)
+    ""))
+
 ;;----------------------------------------------------------------------
 ;; make-section-heading
 ;; Turns uppercases the current line and surrounds it with ===='s
+;;
+;; TODO: Lock these to 72 chars!
 (defun make-section-heading ()
   (interactive)
   (save-excursion
@@ -47,6 +54,8 @@
   (insert "\n" (safe-comment-start) "======================================================================")
   (beginning-of-line)
   (forward-line 3))
+
+(column)
 
 ;;----------------------------------------------------------------------
 ;; make-minor-heading
@@ -83,13 +92,14 @@
 ;; insert-comment-bar
 (defun insert-comment-bar ()
   (interactive)
-  (insert (safe-comment-start) "----------------------------------------------------------------------" (safe-comment-end) "\n"))
+  (insert (safe-comment-start) (repeat-char-to-column ?- 72) (safe-comment-end) "\n"))
 
 ;;----------------------------------------------------------------------
 ;; insert-comment-bar-major
 (defun insert-comment-bar-major ()
   (interactive)
-  (insert (safe-comment-start) "======================================================================" (safe-comment-end) "\n"))
+  (insert (safe-comment-start) (repeat-char-to-column ?= 72) (safe-comment-end) "\n"))
+
 
 ;;----------------------------------------------------------------------
 ;; insert-danger-banner
