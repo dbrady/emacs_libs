@@ -1,9 +1,9 @@
-                                        ; Graciously provided by ams on irc.freenode.net:#emacs
-                                        ; Returns starting point of match if found, else nil
+					; Graciously provided by ams on irc.freenode.net:#emacs
+					; Returns starting point of match if found, else nil
 (defun string-ends-with (regexp string)
   (string-match (concat regexp "$") string))
 
-                                        ; Returns 0 if true, else nil
+					; Returns 0 if true, else nil
 (defun string-starts-with (regexp string)
   (string-match (concat "^" regexp) string))
 
@@ -19,7 +19,7 @@
 
 (defun safe-string (value default-value)
   (if (or (null value)
-          (string= "" value))
+	  (string= "" value))
       default-value
     value))
 
@@ -54,8 +54,6 @@
   (insert "\n" (safe-comment-start) "======================================================================")
   (beginning-of-line)
   (forward-line 3))
-
-(column)
 
 ;;----------------------------------------------------------------------
 ;; make-minor-heading
